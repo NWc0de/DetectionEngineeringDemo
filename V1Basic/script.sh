@@ -1,0 +1,1 @@
+echo flag > flag.txt
